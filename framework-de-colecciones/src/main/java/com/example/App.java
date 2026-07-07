@@ -3,19 +3,14 @@ package com.example;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -297,24 +292,18 @@ public class App {
 		
 		for (Map.Entry<Genero, List<Persona>> entry : personasAgrupadasPorGenero3.entrySet()) {
 			
-			System.out.println("Del genero:  " + entry.getKey());
+			Genero key = entry.getKey();
+			//value es una lista de personas, por lo tanto, para recorrerla y mostrarla
+			List<Persona> value = entry.getValue();
+			
+			System.out.println("Del genero:  " + key);
 			System.out.println("El listado de personas ordenado por edad, primero y"
 					+ " salario posteriormente es: ");
 			
-			entry.getValue().stream()
+			//Recordar que value es una lista de personas, por lo tanto, para recorrerla y mostrarla
+			value.stream()
 				.sorted(Comparator.comparing(Persona::edad).thenComparing(Persona::salario))
 				.forEach(System.out::println);
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
